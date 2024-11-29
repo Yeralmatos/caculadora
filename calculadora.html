@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora Online</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f0f0f0;
+        }
+        .calculadora {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        input[type="text"] {
+            width: 100%;
+            height: 40px;
+            font-size: 24px;
+            text-align: right;
+            margin-bottom: 10px;
+        }
+        button {
+            width: 23%;
+            height: 40px;
+            font-size: 18px;
+            margin: 1%;
+            cursor: pointer;
+        }
+        .fila {
+            display: flex;
+            justify-content: space-between;
+        }
+    </style>
+</head>
+<body>
+
+<div class="calculadora">
+    <input type="text" id="resultado" disabled>
+    <div class="fila">
+        <button onclick="agregarAlResultado('7')">7</button>
+        <button onclick="agregarAlResultado('8')">8</button>
+        <button onclick="agregarAlResultado('9')">9</button>
+        <button onclick="agregarAlResultado('/')">/</button>
+    </div>
+    <div class="fila">
+        <button onclick="agregarAlResultado('4')">4</button>
+        <button onclick="agregarAlResultado('5')">5</button>
+        <button onclick="agregarAlResultado('6')">6</button>
+        <button onclick="agregarAlResultado('*')">*</button>
+    </div>
+    <div class="fila">
+        <button onclick="agregarAlResultado('1')">1</button>
+        <button onclick="agregarAlResultado('2')">2</button>
+        <button onclick="agregarAlResultado('3')">3</button>
+        <button onclick="agregarAlResultado('-')">-</button>
+    </div>
+    <div class="fila">
+        <button onclick="agregarAlResultado('0')">0</button>
+        <button onclick="calcular()">=</button>
+        <button onclick="limpiar()">C</button>
+        <button onclick="agregarAlResultado('+')">+</button>
+    </div>
+</div>
+
+<script>
+    function agregarAlResultado(valor) {
+        document.getElementById('resultado').value += valor;
+    }
+
+    function calcular() {
+        const resultado = document.getElementById('resultado').value;
+        try {
+            document.getElementById('resultado').value = eval(resultado);
+        } catch (error) {
+            document.getElementById('resultado').value = 'Error';
+        }
+    }
+
+    function limpiar() {
+        document.getElementById('resultado').value = '';
+    }
+</script>
+
+</body>
+</html>
